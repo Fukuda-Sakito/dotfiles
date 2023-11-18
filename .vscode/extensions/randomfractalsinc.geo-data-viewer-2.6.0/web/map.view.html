@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self' {cspSource} https://*;
+        script-src {cspSource} https: 'unsafe-inline' 'unsafe-eval';
+        style-src {cspSource} https: 'unsafe-inline';
+        img-src {cspSource} 'self' https://* blob: data:;
+        font-src 'self' {cspSource} https://* blob: data:;
+        connect-src 'self' https://* wss://*;
+        worker-src 'self' https://* blob: data:">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Map View">
+    <title>Map View</title>
+    <link rel="stylesheet" href="https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/uber-fonts/4.0.0/superfine.css">
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css" rel="stylesheet">
+    <link href="{styles}/map.view.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js" crossorigin></script>
+    <script src="https://unpkg.com/react@16.8.4/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/redux@3.7.2/dist/redux.js" crossorigin></script>
+    <script src="https://unpkg.com/react-redux@7.1.3/dist/react-redux.min.js" crossorigin></script>
+    <script src="https://unpkg.com/styled-components@4.1.3/dist/styled-components.min.js" crossorigin></script>
+    <script src="https://unpkg.com/kepler.gl@2.5.5/umd/keplergl.min.js"></script>
+  </head>
+  <body>
+    <div id="toolbar">
+      <div id="toolbar-right">
+        <select id="save-file-type-selector"
+          title="Save Map View"
+          onChange="saveData()">
+          <option value="">📥&nbsp;Save</option>
+          <option value=".kgl.json" title="Map Config">⚙️&nbsp;config</option>
+          <!--
+          <option value=".csv">,,, csv</option>
+          -->
+          <option value=".json" title="Map Data">{ } &nbsp;data</option>
+          <!--
+          <option value=".geojson">{ } &nbsp;geojson</option>
+          -->
+          <option value=".map.json" title="Map Config & Data">{ } &nbsp;map</option>
+          <option value=".kgl.html" title="Map Html">&lt;&gt; html</option>
+          <!--
+          <option value=".png">🖼️&nbsp;png</option>
+          -->
+        </select>
+        <a id="help-button" title="View Map Help" href="#"
+          style="color: orange;"
+          onClick="showHelp()">?</a>
+        <a id="buy-coffee-button" title="Buy Coffee"  href="#"
+          style="color: orangered; font-weight: bold"
+          onClick="buyCoffee()">☕️</a>
+      </div>
+      <div id="toolbar-left">
+        <a id="title" title="View Map Source" href="#"
+          onClick="viewMapSource()">
+          <img id="map-icon" src="{images}/map.svg" width="18" height="18" alt="map" />
+          {fileName}
+        </a>
+        <!-- |
+        <a title="Undo" href="#" onclick="undoConfig()"> ↩ </a>
+        <a title="Redo" href="#" onclick="redoConfig()"> ↪ </a>
+        -->
+        <!--
+        <a id="refresh-map-button" title="Refresh Map" href="#"
+          style="color: orange;"
+          onclick="reloadMap()">🔃</a>
+        -->
+        <a id="open-file-button" title="Open Geo Data File" href="#"
+          onClick="openGeoDataFile()"><span class="label">📤</span></a>
+        <input id="data-url-input" type="text" title="Enter new Geo Data File Path or URL"
+          onKeyPress="loadMapViewFromUrl()" />
+        <a id="show-map-gallery-button" title="View Map Gallery Quick Pick List" href="#"
+          style="color: orange;"
+          onClick="showMapGallery()">⌸</a>
+      </div>
+    </div>
+    <div id="message">Loading Map View...</div>
+    <div id="app" width="400" height="400"></div>
+    <div class="map-attributions mapboxgl-ctrl-bottom-right">
+      <div class="mapboxgl-ctrl mapboxgl-ctrl-attrib">
+        <div class="mapboxgl-ctrl-attrib-inner">
+          <a href="https://kepler.gl/policy" target="_blank" data-external="true">© kepler.gl</a>
+          <a href="https://www.mapbox.com/about/maps/" target="_blank" data-external="true">© Mapbox</a>
+          <a href="http://www.openstreetmap.org/about/" target="_blank" data-external="true">© OpenStreetMap</a>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      const MAPBOX_TOKEN = '{mapboxToken}';
+      const THEME = '{theme}';
+    </script>
+    <script src="{scripts}/map.view.js" crossorigin></script>
+  </body>
+</html>
