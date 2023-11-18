@@ -10,7 +10,7 @@ macOS の設定ファイルを管理するリポジトリ。
 ├── .config
 │   ├── git
 │   │   └── ignore
-│   ├── iterm2
+│   ├── idem2
 │   │   └── AppSupport
 │   │       ├── DynamicProfiles
 │   │       ├── SavedState
