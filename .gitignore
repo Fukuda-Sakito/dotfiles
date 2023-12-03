@@ -70,4 +70,4 @@
 !/LICENSE
 !.gitignore
 !.gitkeep
-!/scripts/**
+!/scripts/install.sh
