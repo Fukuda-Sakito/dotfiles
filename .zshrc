@@ -116,5 +116,8 @@ alias lal="colorls -la"
 alias vi='/opt/homebrew/bin/nvim'
 alias vim='/opt/homebrew/bin/vim'
 
+alias python="python3"
+alias pip="pip3"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

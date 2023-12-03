@@ -1,4 +1,5 @@
 .DS_Store
+.config/nvim/plugin/
 
 
 # 最初にすべての階層のファイルを無視します
